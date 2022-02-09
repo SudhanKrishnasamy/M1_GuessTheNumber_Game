@@ -31,6 +31,6 @@ This project requires a PC or laptop to complete.
 # Low Level Requirements:
  | ID | Description | 
  | -- | ---------------- | 
- | HR01 | Reference number | 
- | HR02 | Guessed number | 
+ | LR01 | Reference number | 
+ | LR02 | Guessed number | 
  
