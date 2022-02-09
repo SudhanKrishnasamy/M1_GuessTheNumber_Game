@@ -1,1 +1,1 @@
-# M1_GuessingGame_Game
+# M1_GuessTheNumber_Game
