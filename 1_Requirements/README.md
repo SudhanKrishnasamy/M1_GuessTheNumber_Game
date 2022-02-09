@@ -28,8 +28,8 @@ This project requires a PC or laptop to complete.
  | HR02 | windows or linux OS | Software |
 
 # Low Level Requirements:
- | ID | Description | Category |
- | -- | ---------------- | ------------- |
+ | ID | Description | 
+ | -- | ---------------- | 
  | HR01 | Reference number | 
  | HR02 | Guessed number | 
  
