@@ -12,7 +12,7 @@ void tearDown()
 {
 
 } 
-void test_guess(void){
+void test_game(void){
     int n=5, guess=5;
     TEST_ASSERT_EQUAL_string(n, guess,"your guess is correct");
 }
