@@ -1,2 +1,2 @@
 # Output
-![output](https://user-images.githubusercontent.com/98818208/153411755-a973a362-f067-47e3-b092-e0a8436478d6.jpg)
+![output](https://user-images.githubusercontent.com/98818208/153412150-41b3815d-fcd2-427e-889f-097f74591e2b.jpg)
