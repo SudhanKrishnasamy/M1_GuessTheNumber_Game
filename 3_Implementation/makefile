@@ -1,34 +1,14 @@
-/**
- * @file main.c
- * @author Sudhan
- * @brief 
- * @version 0.1
- * @date 2022-02-10
- * 
- * @copyright Copyright (c) 2022
- * 
- */
-# Name of the project
-PROJECT_NAME = GuessTheNumber
-
-# Output directory
-BUILD = build
-
-# All source code files
+PROJ_NAME = GuessTheNumber
 SRC = main.c\
-src/guess.c\
 src/guessgame.c\
+src/guess.c
+TEST_SRC = src/guess.c\
+src/guessgame.c\
+test/test_game.c\
+unity/unity.c 
+  
 
-
-# All test source files
-TEST_SRC = test/test_game.c\
-unity/unity.c\
-#Target_name : Dependencies
-#<TAB>Command
-
-target : main.c guess.c guessgame.c guessgame.h
-	gcc main.c guess.c guessgame.c -o all.out
-#To check if the OS is Windows or Linux and set the executable file extension and delete command accordingly
+#To check if the OS is windows or linux and set the executable file extension and delete command accordingly
 ifdef OS
    RM = del /q
    FixPath = $(subst /,\,$1)
@@ -40,53 +20,36 @@ else
 	  EXEC = out
    endif
 endif
-
-TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).out
-
-# All include folders with header files
+TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).$(EXEC)
 INC	= -Iinc\
--Iunity\
+-Iunity
 
-#Library Inlcudes
-#if working with CUnit 
-#INCLUDE_LIBS = -lcunit
-INCLUDE_LIBS =
+all:$(SRC) $(BUILD)
+	gcc $(SRC) $(INC) -o $(call FixPath,$(PROJ_NAME).$(EXEC)) -lm
 
-# Project Output name
-PROJECT_OUTPUT = $(BUILD)/$(PROJECT_NAME).out
 
-# Document files
-DOCUMENTATION_OUTPUT = documentation/html
+run: all
+	./$(call FixPath,$(PROJ_NAME).$(EXEC))
 
-# Default target built
-$(PROJECT_NAME):all
+# Build and run of Unit test
 
-# Run the target even if the matching name exists
-.PHONY: run clean test doc all
+build_test:
+	gcc $(TEST_SRC) $(INC) $(INCLUDE_LIBS) -o $(call FixPath,$(PROJ_NAME).$(EXEC)) -lm
 
-all: $(SRC) $(BUILD)
-	gcc $(SRC) $(INC) -o $(PROJECT_OUTPUT).out
+run_test: build_test
+	./$(call FixPath,$(PROJ_NAME).$(EXEC))
 
-# Call `make run` to run the application
-run:$(PROJECT_NAME)
-	./$(PROJECT_OUTPUT).out
+analyze: test memcheck staticcheck coverage sanitize_check
 
-# Document the code using Doxygen
-doc:
-	make -C ./documentation
+staticcheck:
+	cppcheck --enable=all -iunity .
 
-# Build and run the unit tests
-test:$(BUILD)
-	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT)
-	./$(TEST_OUTPUT)
-#Coverage
-coverageCheck:$(BUILD)
-	g++ -fprofile-arcs -ftest-coverage -fPIC -O0 $(TEST_SRC) $(INC) -o $(TEST_OUTPUT)
+memcheck:
+	valgrind ./$(TEST_OUTPUT)
+
+sanitize_check:
+	gcc -fsanitize=address -fno-omit-frame-pointer $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) 
 	./$(TEST_OUTPUT)
 
-# Remove all the built files, invoke by `make clean`
 clean:
-	rm -rf $(BUILD) $(DOCUMENTATION_OUTPUT)
-# Create new build folder if not present
-$(BUILD):
-	mkdir build
+	$(RM) $(call FixPath,$(PROJ_NAME).$(EXEC))
