@@ -6,29 +6,29 @@
 
 
 # 4W's and 1H
-# Who:
+### Who:
 -This game is beneficial to those who are looking for entertainment.
 
-# What:
+### What:
 -This game improves your anticipation skills.A game played to have fun using computers.
 
-# When:
+### When:
 -When people are looking for a way to de-stress, they turn to this project.
 
-# Where:
+### Where:
 -Can be used anytime and anywhere
 
-# How:
+### How:
 This project requires a PC or laptop to complete.
 
 # Requirements
-# High Level Requirements:
+### High Level Requirements:
 | ID | Description | Category |
  |----| ------------------ | ------------------ |
  | HR01 | Visual Studio code Platform| Software |
  | HR02 | windows or linux OS | Software |
 
-# Low Level Requirements:
+### Low Level Requirements:
  | ID | Description | 
  | -- | ---------------- | 
  | LR01 | Reference number | 
