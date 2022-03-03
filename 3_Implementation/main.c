@@ -19,7 +19,7 @@ int main() {
       c++;
       if(guess>10 || guess <1){
          printf("select a number within the range\n");
-         continue;
+         
       }
       guesstheno(guess);
       if(n==guess){
