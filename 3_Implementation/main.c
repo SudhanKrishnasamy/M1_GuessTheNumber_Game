@@ -25,6 +25,7 @@ int main() {
       if(n==guess){
          f=0;
       printf("Good guess\n ");
+      break;
       }
       else{
       random2= guess_game();
