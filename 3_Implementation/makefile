@@ -7,7 +7,7 @@ src/guess.c\
 TEST_SRC = src/guess.c\
 src/guessgame.c\
 test/test_game.c\
-unity/unity.c\
+unity/unity.c\ 
   
 
 #To check if the OS is windows or linux and set the executable file extension and delete command accordingly
